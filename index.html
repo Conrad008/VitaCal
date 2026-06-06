@@ -38,16 +38,37 @@
         <div class="w-full max-w-md mx-auto bg-white p-5 sm:p-6 rounded-xl shadow-sm border border-gray-100">
             <h3 class="text-sm font-semibold text-gray-700 mb-1">Need Inspiration?</h3>
             <p class="text-xs md:text-sm text-gray-500 mb-4 md:mb-6">Select a random healthy 
-                snack idea from our wide collection.</p>
+                snack idea from our wide collection.
+            </p>
             <button id="suggestion-btn" 
-                    class="w-full bg-[#87CEEB] text-white  font-medium py-2.5 rounded-lg  text-sm cursor-pointer database-btn">
-                    Get Suggestion
+                class="w-full bg-[#87CEEB] text-white  font-medium py-2.5 rounded-lg  text-sm cursor-pointer database-btn">
+                Get Suggestion
             </button>
             <div id="suggestion-display" class="mt-3 p-2.5 bg-gray-50 rounded-lg text-xs text-gray-600 hidden">
             </div>
         </div>
     </div>
 
+    <div class="md:col-span-2 space-y-6">
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col
+         sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
+            <div>
+                <p class="text-xs sm:text-sm font-medium text-gray-400 uppercase tracking-wider">
+                    Total Consumption
+                </p>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-800 mt-1">
+                    <span id="total-calories">0</span> 
+                    <span class="text-base sm:text-lg font-normal text-gray-500">kcal</span>
+                </h2>
+            </div>
+            <button id="reset-btn" 
+                class="w-full sm:w-auto px-4 py-2 bg-rose-50 hover:bg-rose-100 text-rose-600 
+                border border-rose-200 font-medium rounded-lg text-sm 
+                cursor-pointer rst-btn">
+                Reset consumption
+            </button>
+        </div>
+    </div>
 </main>    
     
 </body>
