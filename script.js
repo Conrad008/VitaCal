@@ -71,7 +71,11 @@ const fetchFoodSuggestion = async () => {
             { name: "A Handful of Almonds", calories: 160 },
             { name: "Hummus and Carrots", calories: 140 },
             { name: "Sliced Apple with Peanut Butter", calories: 200 },
-            { name: "Boiled Egg with Paprika", calories: 75 }
+            { name: "Ugali, kales and chicken", calories: 225 },
+            { name: "BLT sandwich", calories: 125 },
+            { name: "Rice and tilapia", calories: 105 },
+            { name: "2 chapatis and legumes(beans,lentils...)", calories: 200 },
+            { name: "Mashed potatoes and beef stew", calories:198},
         ];
         
         // Pick a random snack from the mock pool
@@ -82,7 +86,7 @@ const fetchFoodSuggestion = async () => {
             <div class="flex justify-between items-center">
                 <span>💡 <strong>${randomSnack.name}</strong> (~${randomSnack.calories} kcal)</span>
                 <button type="button" onclick="quickAdd('${randomSnack.name}', ${randomSnack.calories})" 
-                    class="text-xs bg-[#87CEEB] hover:bg-[#87CEEB] text-white font-bold px-2 py-0.5 rounded transition">
+                    class="text-xs bg-[#87CEEB] hover:bg-[#379ec7] cursor text-white font-bold px-2 py-0.5 rounded transition">
                     + Add
                 </button>
             </div>
@@ -102,3 +106,69 @@ window.quickAdd = (name, calories) => {
 };
 
 
+const render = () => {
+    // Clear out current rendered view elements
+    foodList.innerHTML = '';
+    
+    
+    if (foodItems.length === 0) {
+        emptyState.classList.remove('hidden');
+    } else {
+        emptyState.classList.add('hidden');
+    }
+
+    
+    foodItems.forEach(item => {
+        const li = document.createElement('li');
+        li.className = "flex justify-between items-center px-6 py-3 hover:bg-gray-50 transition duration-150";
+        li.innerHTML = `
+            <div class="flex flex-col">
+                <span class="text-sm font-semibold text-gray-700">${item.name}</span>
+                <span class="text-xs text-gray-400">${item.calories} kcal</span>
+            </div>
+            <button aria-label="Remove item" class="text-gray-400 hover:text-rose-500 transition duration-150 p-1 cursor-pointer" data-id="${item.id}">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                 
+                </svg>
+            </button>
+        `;
+        foodList.appendChild(li);
+    });
+
+    const aggregateCalories = foodItems.reduce((acc, currentItem) => acc + currentItem.calories, 0);
+    totalCaloriesDisplay.textContent = aggregateCalories.toLocaleString();
+};
+
+foodForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    addFoodItem(foodNameInput.value, calorieInput.value);
+    foodForm.reset();
+    foodNameInput.focus();
+});
+
+// Event delegation pattern handling dynamic list removal actions
+foodList.addEventListener('click', (e) => {
+    const deleteButton = e.target.closest('button[data-id]');
+    if (deleteButton) {
+        const targetId = deleteButton.getAttribute('data-id');
+        removeFoodItem(targetId);
+    }
+});
+
+// Bind manual operations
+resetBtn.addEventListener('click', resetDay);
+fetchSuggestionBtn.addEventListener('click', fetchFoodSuggestion);
+
+// Initialize application on load
+(() => {
+    const localDatabaseContent = localStorage.getItem('nutriTrack_foods');
+    if (localDatabaseContent) {
+        try {
+            foodItems = JSON.parse(localDatabaseContent);
+        } catch (e) {
+            console.error('State extraction failure. Dropping invalid tables.');
+            foodItems = [];
+        }
+    }
+    render();
+})();
