@@ -16,14 +16,14 @@ This project features semantic Html5, custom css, tailwind css to bring about a 
 
 * **clean footer section** with lings and payment methods to improve the user experience
 
-## tech stack
-* ** HTML **
-* ** Custom css **
-* ** tailwind css **
-* ** git **
-* ** javascript **
-* ** Node.js **
-* ** vercel  **
+## Tech stack
+*  HTML 
+*  Custom css 
+*  tailwind css 
+*  git 
+*  javascript 
+*  Node.js 
+*  vercel  
 
 ## project structure
 ```
@@ -58,7 +58,7 @@ git checkout -b feature/AmazingFeature
 
 **Coding Standards**
 *   Ensure all HTML is semantic and well-commented.
-*   Maintain the **Sky blue ad white** color palette for all UI additions.
+*   Maintain the **Sky blue and white** color palette for all UI additions.
 *   Test responsiveness across multiple screen sizes before submitting.
 
 ## Getting Started
