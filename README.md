@@ -71,7 +71,7 @@ Installation
    
 ```bash
    git clone https://github.com/Conrad008/VitaCal.git
-   cd litera
+   cd VitaCal
 ```
 
 2. **Open the project:**
