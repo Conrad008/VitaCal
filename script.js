@@ -76,6 +76,7 @@ const fetchFoodSuggestion = async () => {
             { name: "Rice and tilapia", calories: 105 },
             { name: "2 chapatis and legumes(beans,lentils...)", calories: 200 },
             { name: "Mashed potatoes and beef stew", calories:198},
+            { name: "granola bar", calories:100},
         ];
         
         // Pick a random snack from the mock pool
@@ -84,7 +85,7 @@ const fetchFoodSuggestion = async () => {
         // Output result to user with an inline button to auto-add it
         suggestionDisplay.innerHTML = `
             <div class="flex justify-between items-center">
-                <span>💡 <strong>${randomSnack.name}</strong> (~${randomSnack.calories} kcal)</span>
+                <span><strong>${randomSnack.name}</strong> (~${randomSnack.calories} kcal)</span>
                 <button type="button" onclick="quickAdd('${randomSnack.name}', ${randomSnack.calories})" 
                     class="text-xs bg-[#87CEEB] hover:bg-[#379ec7] cursor text-white font-bold px-2 py-0.5 rounded transition">
                     + Add
