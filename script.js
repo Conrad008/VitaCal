@@ -1,4 +1,4 @@
-const fooditems = [];
+let fooditems = [];
 
 const foodForm = document.getElementById('food-form');
 const foodNameInput = document.getElementById('food-name');
@@ -36,4 +36,22 @@ const addFoodItem = (name, calories) => {
     };
     foodItems.push(newItem);
     updateAppState();
+};
+
+/**
+ * @param {string} id - The ID of the item to purge
+ */
+const removeFoodItem = (id) => {
+    foodItems = foodItems.filter(item => item.id !== id);
+    updateAppState();
+};
+
+/**
+ * Resets the daily consumption log back to an empty slate.
+ */
+const resetDay = () => {
+    if (confirm('Are you sure you want to reset today\'s food log? This action cannot be undone.')) {
+        foodItems = [];
+        updateAppState();
+    }
 };
