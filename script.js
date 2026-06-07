@@ -55,3 +55,50 @@ const resetDay = () => {
         updateAppState();
     }
 };
+
+const fetchFoodSuggestion = async () => {
+    suggestionDisplay.classList.remove('hidden');
+    suggestionDisplay.textContent = "Fetching suggestion...";
+    
+    try {
+        // Utilizing JSONPlaceholder to simulate data fetch, then mapping it to nutritious data mockups
+        const response = await fetch('https://jsonplaceholder.typicode.com/todos/');
+        if (!response.ok) throw new Error('Network response failure.');
+        
+        // Simulating parsing of nutritional API responses
+        const mockHealthySnacks = [
+            { name: "Greek Yogurt with Berries", calories: 180 },
+            { name: "A Handful of Almonds", calories: 160 },
+            { name: "Hummus and Carrots", calories: 140 },
+            { name: "Sliced Apple with Peanut Butter", calories: 200 },
+            { name: "Boiled Egg with Paprika", calories: 75 }
+        ];
+        
+        // Pick a random snack from the mock pool
+        const randomSnack = mockHealthySnacks[Math.floor(Math.random() * mockHealthySnacks.length)];
+        
+        // Output result to user with an inline button to auto-add it
+        suggestionDisplay.innerHTML = `
+            <div class="flex justify-between items-center">
+                <span>💡 <strong>${randomSnack.name}</strong> (~${randomSnack.calories} kcal)</span>
+                <button type="button" onclick="quickAdd('${randomSnack.name}', ${randomSnack.calories})" 
+                    class="text-xs bg-[#87CEEB] hover:bg-[#87CEEB] text-white font-bold px-2 py-0.5 rounded transition">
+                    + Add
+                </button>
+            </div>
+        `;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        suggestionDisplay.textContent = "Could not load suggestions right now.";
+    }
+};
+
+/**
+ * Global helper function to instantly hook into simulated API suggestions.
+ */
+window.quickAdd = (name, calories) => {
+    addFoodItem(name, calories);
+    suggestionDisplay.classList.add('hidden');
+};
+
+
