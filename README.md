@@ -1,7 +1,7 @@
 ## VitaCal | Calorie counter
 
 VitaCal is a new revolutionary way to improve your healthy lifestyle by allowing users to
-**track the amount of calories they take in a day**. This alows people to manage how much they eat and regulate their lifestyle.
+**track the amount of calories they take in a day**. This allows people to manage how much they eat and regulate their lifestyle.
 
 ## project overview
 
