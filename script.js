@@ -1,4 +1,4 @@
-let fooditems = [];
+let foodItems = [];
 
 const foodForm = document.getElementById('food-form');
 const foodNameInput = document.getElementById('food-name');
@@ -161,7 +161,7 @@ fetchSuggestionBtn.addEventListener('click', fetchFoodSuggestion);
 
 // Initialize application on load
 (() => {
-    const localDatabaseContent = localStorage.getItem('nutriTrack_foods');
+    const localDatabaseContent = localStorage.getItem('VitaCal_foods');
     if (localDatabaseContent) {
         try {
             foodItems = JSON.parse(localDatabaseContent);
